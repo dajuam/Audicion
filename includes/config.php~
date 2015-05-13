@@ -1,0 +1,7 @@
+<?php 
+$DB_HOST = '192.168.0.24';
+$DB_USER = 'root';
+$DB_PASS = 'S1G34r00t';
+$DB_NAME = 'sigea';
+$mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+?>
