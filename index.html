@@ -15,20 +15,19 @@
             background-color: #f5f5f5;
         }
     </style>
-    <title>Consulta de la tabla audit_records</title>
+    <title ng-controller="MessagesController">Consulta de la tabla {{tableName}}</title>
 </head>
 <body>
     <div class="navbar navbar-default" id="navbar">
         <div class="container" id="navbar-container">
-            <div class="navbar-header">
+            <div class="navbar-header" ng-controller="MessagesController">
                 <a href="#" class="navbar-brand">
                     <small>
                         <i class="glyphicon glyphicon-log-out"></i>
-                        Consulta de la tabla audit_records en SiGeA v2 Producción
+                        Consulta de la tabla {{tableName}} en SiGeA v2 Producción
                     </small>
-                </a><!-- /.brand -->
-                
-            </div><!-- /.navbar-header -->
+                </a>
+            </div>
         </div>
     </div>
     <div ng-controller="customersCrtl">
@@ -46,9 +45,8 @@
             <div class="col-md-3">Filtro:
                 <input type="text" ng-model="search" ng-change="filter()" placeholder="Filtro" class="form-control" />
             </div>
-
             <div class="col-md-4">
-                <h5>Filtrados {{ filtered.length }} de un total de {{ totalItems}} registros</h5>
+                <h5>Filtrados {{filtered.length}} de un total de {{totalItems}} registros (sólo se muestran los últimos {{totalItems}} registros)</h5>
             </div>
         </div>
         <br/>
@@ -88,7 +86,6 @@
             </div>
         </div>
     </div>
-
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
     <script src="app/app.js"></script>

@@ -1,21 +1,38 @@
+/**
+ * Angular App Definition
+ * @author: jmartinez
+ */
+
 var app = angular.module('myApp', ['ui.bootstrap']);
+
+// Defining services for the entire app
+app.factory('Services', function() {
+    return {
+        tableName : 'audit_records'
+    };
+});
+
+// Controller for messages in the app
+function MessagesController($scope, Services) {
+    $scope.tableName = Services.tableName;
+}
 
 app.filter('startFrom', function() {
     return function(input, start) {
         if(input) {
-            start = +start; //parse to int
+            start = +start; // Parse to int
             return input.slice(start);
         }
         return [];
     }
 });
+
 app.controller('customersCrtl', function ($scope, $http, $timeout) {
     $http.get('ajax/getCustomers.php').success(function(data){
-        console.log(data);
         $scope.list = data;
-        $scope.currentPage = 1; //current page
-        $scope.entryLimit = 10; //max no of items to display in a page
-        $scope.filteredItems = $scope.list.length; //Initially for no filter  
+        $scope.currentPage = 1; // Current page
+        $scope.entryLimit = 10; // Max no of items to display in a page
+        $scope.filteredItems = $scope.list.length; // Initially for no filter  
         $scope.totalItems = $scope.list.length;
     });
     $scope.setPage = function(pageNo) {
